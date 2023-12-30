@@ -1,12 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boston Housing Dataset</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ML API - Boston House Price Prediction</title>
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Hind:300" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f4f4f4;
+      font-family: 'Arimo', sans-serif;
+      text-align: center;
+    }
+
+    .login {
+      background: #fff;
+      padding: 20px;
+      max-width: 400px;
+      margin: 50px auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: 'Hind', sans-serif;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Open Sans Condensed', sans-serif;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Boston Housing Dataset</h1>
-    <p>This page displays information about the Boston Housing dataset.</p>
+  <div class="login">
+    <h1>Boston House Price Prediction</h1>
+
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post">
+      <input type="text" name="CRIM" placeholder="CRIM" required="required" />
+      <input type="text" name="ZN" placeholder="ZN" required="required" />
+      <input type="text" name="INDUS" placeholder="INDUS" required="required" />
+      <input type="text" name="CHAS" placeholder="CHAS" required="required" />
+      <input type="text" name="NOX" placeholder="NOX" required="required" />
+      <input type="text" name="RM" placeholder="RM" required="required" />
+      <input type="text" name="Age" placeholder="Age" required="required" />
+      <input type="text" name="DIS" placeholder="DIS" required="required" />
+      <input type="text" name="RAD" placeholder="RAD" required="required" />
+      <input type="text" name="TAX" placeholder="TAX" required="required" />
+      <input type="text" name="PTRATIO" placeholder="PTRATIO" required="required" />
+      <input type="text" name="B" placeholder="B" required="required" />
+      <input type="text" name="LSTAT" placeholder="LSTAT" required="required" />
+
+      <button type="submit">Predict</button>
+    </form>
+
+    <div class="result">
+      {{prediction_text}}
+    </div>
+  </div>
 </body>
+
 </html>
